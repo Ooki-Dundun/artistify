@@ -1,0 +1,12 @@
+<h1>Artists</h1>
+<ul>
+    {{#each artists}}
+    <li>
+        <p>name: {{this.name}}</p>
+        <p>description: {{this.description}}</p>
+        <a href="/delete/{{this._id}}"></a>
+        <a href="/update/{{this._id}}"></a>
+    </li>
+
+    {{/each}}
+</ul>

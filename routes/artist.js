@@ -1,9 +1,17 @@
 const express = require("express");
 const router = express.Router();
+const ArtistModel = require("../models/Artist");
 
 /* GET dashboard page  */
-router.get("/", (req, res) => {
-  res.render("dashboard/artists");
+router.get("/", (req, res, next) => {
+  ArtistModel.find()
+    .then((artists) => {
+      console.log(artists)
+      res.render("dashboard/artists", {
+        artists: artists,
+      });
+    })
+    .catch(err => next(err));
 });
 
 // GET create page

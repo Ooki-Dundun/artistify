@@ -2,29 +2,28 @@ require("../../config/mongo");
 
 const ArtistModel = require("./../../models/Artist");
 
-const artists = [{
+const artists = [
+  {
     name: "Daft Punk",
-    isBand : true,
+    isBand: true,
     description: "French electronic duo",
-
-            },
-{
+  },
+  {
     name: "Rone",
-    isBand : false,
+    isBand: false,
     description: "French electronic artist",
-            },
-{
+  },
+  {
     name: "Air",
-    isBand : true,
+    isBand: true,
     description: "French electronic duo",
-            
-         },
-]
+  },
+];
 
 ArtistModel.insertMany(artists)
-    .then((ArtistDoc) => {
-        console.log(ArtistDoc)
-    })
-    .catch ((error) => {
-        console.log(error);
-    });
+  .then((ArtistDoc) => {
+    console.log(ArtistDoc);
+  })
+  .catch((error) => {
+    console.log(error);
+  });

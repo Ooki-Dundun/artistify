@@ -2,7 +2,7 @@ require("../../config/mongo");
 
 const ArtistModel = require("./../../models/Artist");
 
-const artist = [{
+const artists = [{
     name: "Daft Punk",
     isBand : true,
     description: "French electronic duo",

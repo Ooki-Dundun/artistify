@@ -26,16 +26,15 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // connect routers
 const indexRouter = require("./routes/index");
-// require artist router
-// require label router here
-// require style router here
+const artistRouter = require("./routes/artist");
+const labelsRouter = require("./routes/labels");
+const styleRouter = require("./routes/style");
 
 // use routers
 app.use("/", indexRouter); // use routers
-// use artist router here
-// use label router here
-// use style router here
-
+app.use("/dashboard/artist", artistRouter); // use artist router here
+app.use("/dashboard/label", labelsRouter); // use label router here
+app.use("/dashboard/style", styleRouter); // use style router here
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -54,4 +53,3 @@ app.use(function (err, req, res, next) {
 });
 
 module.exports = app;
-

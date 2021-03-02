@@ -29,12 +29,14 @@ const indexRouter = require("./routes/index");
 const artistRouter = require("./routes/artist");
 const labelsRouter = require("./routes/labels");
 const styleRouter = require("./routes/style");
+const albumRouter = require("./routes/album");
 
 // use routers
 app.use("/", indexRouter); // use routers
 app.use("/dashboard/artist", artistRouter); // use artist router here
 app.use("/dashboard/label", labelsRouter); // use label router here
 app.use("/dashboard/style", styleRouter); // use style router here
+app.use("/dashboard/album", albumRouter); //use album router here
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

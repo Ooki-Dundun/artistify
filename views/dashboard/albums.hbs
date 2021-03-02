@@ -1,0 +1,26 @@
+<h1>Albums</h1>
+
+<table>
+    <tr>
+        <th>cover</th>
+        <th>title</th>
+        <th>release date</th>
+        <th>label</th>
+        <th>artist</th>
+        <th>update</th>
+        <th>delete</th>
+    </tr>
+    {{#each albums}}
+    <tr>
+       <td><img src="{{this.cover}}" alt="cover of {{this.title}}" class="table-image"></td>
+       <td>{{this.title}}</td>
+       <td>{{formatDate this.releaseDate}}</td>
+       <td>{{label.name}}</td>
+       <td>{{artist.name}}</td>
+       <td><a href="/dashboard/album/update/{{this._id}}">edit</a></td>
+       <td><a href="/dashboard/album/delete/{{this._id}}">delete</a></td>
+    </tr>
+    {{/each}}
+</table>
+
+<a href="/dashboard/album/create">add a new album to the database</a>

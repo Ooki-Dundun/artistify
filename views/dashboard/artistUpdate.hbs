@@ -12,5 +12,11 @@
     <label for="picture">picture</label>
     <input type="file" name="picture" id="picture-input">
     <input type="text" name="existingPicture" hidden value="{{artist.picture}}">
+     <label for="style">style</label>
+    <select name="style">
+        {{#each styles}}
+        <option value="{{this._id}}">{{this.name}}</option>
+        {{/each}}
+    </select>
     <button class="btn" type="submit">edit now</button>
 </form>

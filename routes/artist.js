@@ -3,6 +3,7 @@ const { on } = require("../models/Artist");
 const router = express.Router();
 const ArtistModel = require("../models/Artist");
 const fileUploader = require('../config/cloudinary');
+const StyleModel = require('../models/Style');
 
 /* GET dashboard page  */
 router.get("/", (req, res, next) => {
@@ -17,7 +18,9 @@ router.get("/", (req, res, next) => {
 
 // GET create page
 router.get("/create", (req, res, next) => {
-  res.render("dashboard/artistCreate.hbs");
+  StyleModel.find()
+  .then((styles) =>  res.render("dashboard/artistCreate.hbs", {styles}))
+  .catch((err) => next(err));
 });
 
 // GET update page
@@ -47,7 +50,7 @@ router.post("/addnew", fileUploader.single("picture"), (req, res, next) => {
     name,
     isBand: isBand === "on",
     description,
-    picture: req.file.path
+    picture: req.file ? req.file.path : undefined
   })
   .then((newArtist) => res.redirect("/dashboard/artist"))
   .catch((err) => next(err));

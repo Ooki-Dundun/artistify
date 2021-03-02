@@ -1,12 +1,24 @@
 <h1>Artists</h1>
-<ul>
-    {{#each artists}}
-    <li>
-        <p>name: {{this.name}}</p>
-        <p>description: {{this.description}}</p>
-        <a href="/delete/{{this._id}}"></a>
-        <a href="/update/{{this._id}}"></a>
-    </li>
 
+<table>
+    <tr>
+        <th>picture</th>
+        <th>name</th>
+        <th>description</th>
+        <th>band</th>
+        <th>update</th>
+        <th>delete</th>
+    </tr>
+    {{#each artists}}
+    <tr>
+       <td><img src="{{this.picture}}" alt="image of {{this.name}}" class="table-image"></td>
+       <td>{{this.name}}</td>
+       <td>{{this.description}}</td>
+       <td>{{this.isBand}}</td>
+       <td><a href="/dashboard/artist/update/{{this._id}}">edit</a></td>
+       <td><a href="/dashboard/artist/delete/{{this._id}}">delete</a></td>
+    </tr>
     {{/each}}
-</ul>
+</table>
+
+<a href="/dashboard/artist/create">add a new artist to the database</a>

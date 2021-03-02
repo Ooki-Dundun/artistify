@@ -1,0 +1,18 @@
+<form method="post" action="/dashboard/label/{{label.id}}" enctype="multipart/form-data">
+    <label for="name">name</label>
+    <input  type="text" name="name" value="{{label.name}}">
+    <label for="city">city</label>
+    <input  type="text" name="city" value="{{label.city}}">
+    <label for="country">country</label>
+    <input  type="text" name="country" value="{{label.country}}">
+    <label for="street">street</label>
+    <input  type="text" name="street" value="{{label.street}}">
+    <label for="streetNumber"></label>
+    <input  type="number" name="streetNumber" value="{{label.streetNumber}}">
+    <label for="zipCode">zipCode</label>
+    <input  type="text" name="zipCode" value="{{label.zipCode}}">
+    <label for="logo">logo</label>
+    <input type="file" name="logo" id="logo-input">
+    <input type="text" name="existinglogo" hidden value="{{label.logo}}">
+    <button class="btn" type="submit">edit now</button>
+</form>

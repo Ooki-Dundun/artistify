@@ -1,0 +1,16 @@
+<form method="post" action="/dashboard/artist/{{artist._id}}" enctype="multipart/form-data">
+    <label for="name">name</label>
+    <input  type="text" name="name" value="{{artist.name}}">
+    <label for="isBand">He is in a band</label>
+    {{#if artist.isBand}}
+    <input id="isBand" class="input" type="checkbox" name="isBand" checked>
+    {{else}}
+    <input id="isBand" class="input" type="checkbox" name="isBand">
+    {{/if}}
+    <label for="description">description</label>
+    <input  type="text" name="description" value="{{artist.description}}">
+    <label for="picture">picture</label>
+    <input type="file" name="picture" id="picture-input">
+    <input type="text" name="existingPicture" hidden value="{{artist.picture}}">
+    <button class="btn" type="submit">edit now</button>
+</form>

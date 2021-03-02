@@ -1,0 +1,21 @@
+<h1>Styles</h1>
+<table>
+    <tr>
+        <th>color</th>
+        <th>name</th>
+        <th>wiki</th>
+        <th>update</th>
+        <th>delete</th>
+    </tr>
+    {{#each styles}}
+    <tr>
+        <td class= "label color" style="background-color:{{this.color}}"></td>
+       <td>{{this.name}}</td>
+       <td><a href="{{this.wikiURL}}"></a>here</td>
+       <td><a href="/dashboard/style/update/{{this._id}}">edit this style</a></td>
+       <td><a href="/dashboard/style/delete/{{this._id}}">remove this style from the database</a></td>
+    </tr>
+    {{/each}}
+</table>
+<a href="/dashboard/style/create">add a new style to the database</a>
+

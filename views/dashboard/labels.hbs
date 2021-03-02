@@ -1,0 +1,28 @@
+<h1>Labels</h1>
+<table>
+    <tr>
+        <th>logo</th>
+        <th>name</th>
+        <th>country</th>
+        <th>city</th>
+        <th>street</th>
+        <th>street num</th>
+        <th>zip</th>
+        <th>update</th>
+        <th>delete</th>
+    </tr>
+    {{#each labels}}
+    <tr>
+       <td><img src="{{this.logo}}" alt="image of {{this.name}}" class="table-image"></td>
+       <td>{{this.name}}</td>
+       <td>{{this.country}}</td>
+       <td>{{this.city}}</td>
+       <td>{{this.street}}</td>
+       <td>{{this.streetNumber}}</td>
+       <td>{{this.zipCode}}</td>
+       <td><a href="/dashboard/label/update/{{this._id}}">edit this label</a></td>
+       <td><a href="/dashboard/label/delete/{{this._id}}">remove this label from database</a></td>
+    </tr>
+    {{/each}}
+</table>
+<a href="/dashboard/label/create">add a new label to the database</a>

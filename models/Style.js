@@ -14,5 +14,5 @@ const styleSchema = new Schema ({
     });
 
 
-const StyleModel = mongoose.model('style', styleSchema);
+const StyleModel = mongoose.model('styles', styleSchema);
 module.exports= StyleModel;

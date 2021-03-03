@@ -1,0 +1,19 @@
+<form method="post" action="/dashboard/album/{{album._id}}/edited" enctype="multipart/form-data">
+    <label for="title">title</label>
+    <input  type="text" name="title" value="{{album.title}}">
+    <label for="releaseDate">release date</label>
+    <input  type="date" name="releaseDate" value="{{album.releaseDate}}">
+    <label for="cover">cover</label>
+    <input type="file" name="cover" id="cover-input" value="{{album.cover}}">
+    <select name="label">
+        {{#each labels}}
+        <option value="{{this._id}}">{{this.name}}</option>
+        {{/each}}
+    </select>
+    <select name="artist">
+        {{#each artists}}
+        <option value="{{this._id}}">{{this.name}}</option>
+        {{/each}}
+    </select>
+    <button class="btn" type="submit">edit now<button>
+</form>

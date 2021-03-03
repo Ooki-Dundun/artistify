@@ -7,7 +7,7 @@ const StyleModel = require('../models/Style');
 
 /* GET dashboard page  */
 router.get("/", (req, res, next) => {
-  ArtistModel.find()
+  ArtistModel.find().populate("style")
     .then((artists) => {
       res.render("dashboard/artists", {
         artists: artists,
@@ -25,9 +25,15 @@ router.get("/create", (req, res, next) => {
 
 // GET update page
 router.get("/update/:id", (req, res, next) => {
-  ArtistModel.findById(req.params.id)
+  ArtistModel.findById(req.params.id).populate("style")
   .then((artist) => { 
-    res.render("dashboard/artistUpdate.hbs", {artist})
+    StyleModel.find()
+    .then((styles) => {
+      res.render("dashboard/artistUpdate.hbs", {
+        artist: artist,
+        styles: styles
+      })
+    })
   })
   .catch((err) => next(err));
 });
@@ -44,13 +50,14 @@ router.get("/delete/:id", (req, res, next) => {
 
 // create
 router.post("/addnew", fileUploader.single("picture"), (req, res, next) => {
-  const {name, description, isBand} = req.body;
+  const {name, isBand, description, pciture, style} = req.body;
   console.log(req.file);
   ArtistModel.create({
     name,
     isBand: isBand === "on",
     description,
-    picture: req.file ? req.file.path : undefined
+    picture: req.file ? req.file.path : undefined,
+    style
   })
   .then((newArtist) => res.redirect("/dashboard/artist"))
   .catch((err) => next(err));
@@ -58,14 +65,15 @@ router.post("/addnew", fileUploader.single("picture"), (req, res, next) => {
 
 // POST with id
 router.post("/:id", fileUploader.single("picture"), (req, res, next) => {
-  const { name, isBand, description, picture } = req.body;
+  const { name, isBand, description, picture, style } = req.body;
   let pictureURL;
   req.file ? pictureURL = req.file.path : pictureURL = req.body.existingPicture;
   ArtistModel.findByIdAndUpdate(req.params.id, {
     name,
     isBand: isBand === 'on',
     description,
-    picture: pictureURL
+    picture: pictureURL,
+    style
   })
   .then(() => res.redirect("/dashboard/artist"))
   .catch((err) => next(err))

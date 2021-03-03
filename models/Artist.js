@@ -12,7 +12,7 @@ const artistSchema = new Schema ({
         type: String,
         default: "https://res.cloudinary.com/gdaconcept/image/upload/v1614550771/workshop-artistify/no-image-logo_dcufai.png", 
     },
-    style: {type: Schema.Types.ObjectID, ref: "style"}
+    style: {type: Schema.Types.ObjectId, ref: "styles"}
     });
 
 

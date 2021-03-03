@@ -1,0 +1,19 @@
+<form method="post" action="/dashboard/album/addnew" enctype="multipart/form-data">
+    <label for="title">title</label>
+    <input  type="text" name="title">
+    <label for="releaseDate">release date</label>
+    <input  type="date" name="releaseDate">
+    <label for="cover">cover</label>
+    <input type="file" name="cover" id="cover-input">
+    <select name="label">
+        {{#each labels}}
+        <option value="{{this._id}}">{{this.name}}</option>
+        {{/each}}
+    </select>
+    <select name="artist">
+        {{#each artists}}
+        <option value="{{this._id}}">{{this.name}}</option>
+        {{/each}}
+    </select>
+    <button class="btn" type="submit">add new album</button>
+</form>
